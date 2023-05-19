@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import javax.validation.Valid;
+
 @RequestMapping("/movement-cash")
 @RestController
 public class CashFlowController {
@@ -20,7 +22,7 @@ public class CashFlowController {
     }
 
     @PostMapping
-    public Mono<ResponseEntity<Void>> startCashFlow(@RequestBody CashFlowDTO cashFlow) {
+    public Mono<ResponseEntity<Void>> startCashFlow(@RequestBody @Valid CashFlowDTO cashFlow) {
         return Mono.just(cashFlow)
                 .flatMap(cashFlowService::beginProcess)
                         .map(mp -> ResponseEntity.noContent().build());

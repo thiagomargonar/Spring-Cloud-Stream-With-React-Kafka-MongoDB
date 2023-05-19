@@ -1,9 +1,14 @@
 package com.cashflow.dto;
 
+import com.cashflow.annotations.Document;
+
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class CashFlowDTO {
 
+    @NotNull
+    @Document
     private String document;
     private TypeDTO type;
     private BigDecimal value;

@@ -5,6 +5,15 @@ spring:
     group: consumo
     kafka: localhost:9092
     definition: sendCashIn;sendCashOut
+    mongo: mongodb://root:rootpassword@localhost
+  data:
+    mongodb:
+      auto-index-creation: true
+      database: app_cash_flow
+      authentication-database: admin
+      uri: ${spring.application.mongo}
+      repositories:
+        enabled: true
   cloud:
     stream:
       default:

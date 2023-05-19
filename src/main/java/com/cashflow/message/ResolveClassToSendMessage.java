@@ -2,11 +2,12 @@ package com.cashflow.message;
 
 import com.cashflow.dto.CashFlowDTO;
 import com.cashflow.dto.TypeDTO;
-import com.cashflow.message.CashSend;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Component
 public class ResolveClassToSendMessage {
@@ -19,11 +20,10 @@ public class ResolveClassToSendMessage {
 
     public Mono<CashFlowDTO> sendMessageProcess(CashFlowDTO cashFlowDTO) {
         return Mono.just(cashFlowDTO)
-                .flatMap(dto -> process(customCashSend.get(dto.getType()), dto))
-                .thenReturn(cashFlowDTO);
+                .flatMap(dto -> process(customCashSend.get(dto.getType()), dto));
     }
 
-    private Mono<Void> process(CashSend cashSend, CashFlowDTO cashFlowDTO) {
-        return cashSend.sendMessageOf(cashFlowDTO).then();
+    private Mono<CashFlowDTO> process(CashSend cashSend, CashFlowDTO cashFlowDTO) {
+        return cashSend.sendMessageOf(cashFlowDTO);
     }
 }
