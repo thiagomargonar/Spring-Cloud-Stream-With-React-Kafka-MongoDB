@@ -1,11 +1,11 @@
 server:
   port: 9000
 spring:
-  application:
-    group: consumo
-    kafka: localhost:9092
-    definition: sendCashIn;sendCashOut
-    mongo: mongodb://root:rootpassword@localhost
+#  application:
+#    group: consumo
+#    kafka: localhost:9092
+#    definition: sendCashIn;sendCashOut
+#    mongo: mongodb://root:rootpassword@localhost
   data:
     mongodb:
       auto-index-creation: true
