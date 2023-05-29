@@ -9,12 +9,11 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
-import org.springframework.messaging.Message;
 
 import java.util.function.Supplier;
 
 @Component
-public class InFlowSend  implements CashSend {
+public class InFlowSend implements CashSend {
     private static final Logger logger = LoggerFactory.getLogger(InFlowSend.class);
 
     private final Sinks.Many<CashFlowDTO> sink;
@@ -41,7 +40,7 @@ public class InFlowSend  implements CashSend {
     @Override
     public Mono<CashFlowDTO> sendMessageOf(CashFlowDTO request) {
         return Mono.just(sink.tryEmitNext(request))
-                .doOnNext(emitResult -> logger.info("emiti result IN solicitado: {}",emitResult))
+                .doOnNext(emitResult -> logger.info("emiti result IN solicitado: {}", emitResult))
                 .thenReturn(request);
     }
 
