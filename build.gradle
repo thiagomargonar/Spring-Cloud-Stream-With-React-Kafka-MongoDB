@@ -39,7 +39,6 @@ sonarqube {
 		property("sonar.projectKey", "teste")
 		property("sonar.organization", "teste")
 		property("sonar.host.url", "http://localhost:9000")
-		property("sonar.token", "sqp_e6b6779b0bba77ea608454cdba0c2e844b3e4f67")
 	}
 
 }

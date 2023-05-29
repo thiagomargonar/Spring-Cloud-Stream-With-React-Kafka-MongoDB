@@ -49,8 +49,13 @@ spring:
           group: ${spring.application.group}
           content-type: application/json
 
-systemProp:
-  sonar:
-    projectKey: teste
-    host:
-      url: http://localhost:9000
+sonar:
+  projectKey: teste1
+  projectName: teste
+  projectVersion: 1.0
+  source: .
+  java:
+    binaries: .
+    file:
+      sufiffixes: fava
+  sourceEncoding: UTF-8
